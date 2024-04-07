@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fwx.mapper.UserMapper">
+
+    <!--int insertUser();-->
+    <insert id="insertUser">
+        insert into t_user (username,password,age,gender,email) values ('admin',1234,18,'男','tom@qq.com')
+    </insert>
+
+    <update id="updateUser">
+        update t_user set username='root' where id=3
+    </update>
+
+    <delete id="deteleOne">
+        delete from t_user where id=3
+    </delete>
+
+    <select id="selectOne" resultType="org.fwx.pojo.User">
+        select * from t_user where id=1
+    </select>
+
+    <select id="selectAll" resultType="User">
+        select * from t_user
+    </select>
+</mapper>
