@@ -14,6 +14,13 @@
         <module>d04_mybatis_dynamicSQL</module>
         <module>d05_mybatis_mbg</module>
         <module>d06_spring_helloworld</module>
+        <module>d07_spring_ioc_xml</module>
+        <module>d08_spring_ioc_annotation</module>
+        <module>d09_spring_proxy</module>
+        <module>d10_spring_aop</module>
+        <module>d11_spring-transaction</module>
+        <module>d12_spring_mvc_helloworld</module>
+        <module>d13_spring_mvc_Demo</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -36,6 +43,24 @@
             <artifactId>spring-context</artifactId>
             <version>5.3.1</version>
         </dependency>
+        <!-- spring-aop spring-aspects会帮我们传递过来aspectjweaver -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+        <!-- JdbcTemplate、Tx，导入 orm 包就可以通过 Maven 的依赖传递性把其他两个也导入 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+        <!-- Spring 测试相关 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.3.1</version>
+        </dependency>
 
         <!-- junit测试 -->
         <dependency>
@@ -49,6 +74,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.16</version>
+        </dependency>
+        <!-- 数据源 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.31</version>
         </dependency>
         <!-- log4j日志 -->
         <dependency>
