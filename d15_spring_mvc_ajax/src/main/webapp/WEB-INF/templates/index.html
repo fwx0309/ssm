@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script type="text/javascript" th:src="@{/static/js/jquery-1.8.2.min.js}"></script>
+</head>
+<body>
+    index<br/>
+    <p>ajax 异步请求</p>
+    <button id="ajaxBtn">ajax</button>
+    <button id="ajaxBtn1">ajax1</button>
+
+    <hr/>
+    <p>文件上传下载</p>
+    <a th:href="@{/download}">download 1.jpg</a>
+    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+        上传图片：<input type="file" name="photo">
+        <input type="submit" value="提交">
+    </form>
+
+</body>
+<script type="text/javascript">
+    $(function (){
+        $("#ajaxBtn").click(function (){
+            $.ajax({
+                url: '/springmvc/ajax', // 后端处理请求的URL
+                type: 'POST',
+                // data: '{"username":"fwx","password":"123456"}', // 直接拼写
+                data: JSON.stringify({"username":"fwx","password":"123456"}),
+                headers: {
+                    'Content-Type': 'application/json'  //application/x-www-form-urlencoded  application/json
+                },
+                success: function(data) {
+                    console.log(data);
+                    console.log(data.username)// 使用返回的数据更新页面元素
+                    console.log(data.password)//
+                },
+                error: function(error) {
+                    console.log('Error fetching data: ', error);
+                }
+            });
+        })
+
+        $("#ajaxBtn1").click(function (){
+            $.ajax({
+                url: '/springmvc/ajax1', // 后端处理请求的URL
+                type: 'GET',
+                data: {cname:'李白',skin_name:'青莲剑仙'},
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(error) {
+                    console.log('Error fetching data: ', error);
+                }
+            });
+        })
+    })
+</script>
+</html>
