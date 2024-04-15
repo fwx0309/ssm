@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>employee_list</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/index_work.css}">
+    <script type="text/javascript" th:src="@{/static/js/jquery-1.8.2.min.js}"></script>
+    <script type="text/javascript">
+        $(function (){
+            $(".deleteA").click(function (){
+                debugger
+                $("#deleteFrom").attr("action",$(this).attr("href"))
+                $("#deleteFrom").submit()
+                return false;
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="app">
+  <table>
+      <tr>
+          <td colspan="5">employee_list</td>
+      </tr>
+      <tr>
+          <td>id</td>
+          <td>lastName</td>
+          <td>email</td>
+          <td>gender</td>
+          <td>opetion <a th:href="@{/to/add}">(add)</a></td>
+      </tr>
+      <tr th:each="employee : ${employees}">
+          <td th:text="${employee.id}"></td>
+          <td th:text="${employee.lastName}"></td>
+          <td th:text="${employee.email}"></td>
+          <td th:text="${employee.gender}"></td>
+          <td>
+              <a th:href="@{'/to/update/'+${employee.id}}">更新</a>&nbsp;
+              <a class="deleteA" th:href="@{'/employee/'+${employee.id}}">删除</a>
+          </td>
+      </tr>
+  </table>
+</div>
+</body>
+<form id="deleteFrom" method="post">
+    <input type="hidden" name="_method" value="delete">
+</form>
+</html>
